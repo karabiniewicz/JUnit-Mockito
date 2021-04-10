@@ -39,7 +39,7 @@ public class BeerControllerTest {
         BeerController beerController = new BeerController(beerRepository);
         when(beerRepository.get("Specjal")).thenReturn(Optional.empty());
 
-        String s = beerController.get("Specjal");
+        String s = beerController.find("Specjal");
 
         Assertions.assertThat(s).isEqualTo("not found");
     }
@@ -54,7 +54,7 @@ public class BeerControllerTest {
                 .build();
         when(beerRepository.get("Specjal")).thenReturn(Optional.of(beer));
 
-        String s = beerController.get("Specjal");
+        String s = beerController.find("Specjal");
 
         Assertions.assertThat(s).isEqualTo(beer.toString());
     }
@@ -67,12 +67,12 @@ public class BeerControllerTest {
                 .name("Specjal")
                 .price(5)
                 .build();
-        doNothing().when(beerRepository).add(beer);
+        doNothing().when(beerRepository).save(beer);
 
-        String s = beerController.save(beer);
+        String s = beerController.save("Specjal", 5);
 
         Assertions.assertThat(s).isEqualTo("done");
-        verify(beerRepository, times(1)).add(eq(beer));
+        verify(beerRepository, times(1)).save(eq(beer));
     }
 
     @Test
@@ -83,9 +83,9 @@ public class BeerControllerTest {
                 .name("Specjal")
                 .price(5)
                 .build();
-        doThrow(new IllegalArgumentException()).when(beerRepository).add(beer);
+        doThrow(new IllegalArgumentException()).when(beerRepository).save(beer);
 
-        String s = beerController.save(beer);
+        String s = beerController.save("Specjal", 5);
 
         Assertions.assertThat(s).isEqualTo("bad request");
     }

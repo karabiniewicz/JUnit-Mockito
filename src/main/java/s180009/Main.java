@@ -21,23 +21,25 @@ public class Main {
             System.out.print("command: ");
             String command = scanner.next();
             switch (command) {
-                case "BeerAdd":
-                    new BeerAdd(beerController).display();
+                case "BeerSave":
+                    new BeerSave(beerController).display();
                     break;
                 case "BeerDelete":
                     new BeerDelete(beerController).display();
                     break;
-                case "BreweryAdd":
+                case "BeerFind":
                     new BeerFind(beerController).display();
                     break;
+/*
                 case "viewAll":
                     new DataView(beerController).display();
                     break;
+*/
                 case "quit":
                     exit = true;
                     break;
                 default:
-                    System.out.println("BeerAdd|BeerDelete|BreweryAdd|BreweryDelete|viewAll|BeersWithLowerPrice||quit");
+                    System.out.println("BeerSave|BeerDelete|BeerFind||quit");
             }
             System.out.println();
         }

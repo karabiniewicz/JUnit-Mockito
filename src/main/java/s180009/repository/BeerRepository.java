@@ -3,34 +3,34 @@ package s180009.repository;
 import s180009.entity.Beer;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
 
 public class BeerRepository {
 
-    private final List<Beer> beers = new ArrayList<>();
+    private final Collection<Beer> collection = new ArrayList<>();
 
     public void delete(String name) {
-        Beer beer = beers.stream()
+        Beer beer = collection.stream()
                 .filter(element -> element.getName().equals(name))
                 .findAny()
                 .orElseThrow(IllegalArgumentException::new);
-        beers.remove(beer);
+        collection.remove(beer);
     }
 
-    public void add(Beer beer) {
-        Optional<Beer> any = beers.stream()
+    public void save(Beer beer) {
+        Optional<Beer> any = collection.stream()
                 .filter(element -> element.getName().equals(beer.getName()))
                 .findAny();
         if (any.isEmpty()) {
-            beers.add(beer);
+            collection.add(beer);
         } else {
             throw new IllegalArgumentException();
         }
     }
 
     public Optional<Beer> get(String name) {
-        return beers.stream()
+        return collection.stream()
                 .filter(element -> element.getName().equals(name))
                 .findAny();
     }

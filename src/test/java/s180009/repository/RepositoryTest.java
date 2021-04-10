@@ -24,7 +24,7 @@ public class RepositoryTest {
     @Test
     public void get_objectExist_optionalObject() {
         BeerRepository beerRepository = new BeerRepository();
-        beerRepository.add(Beer.builder().name("Specjal").price(4).build());
+        beerRepository.save(Beer.builder().name("Specjal").price(4).build());
         Optional<Beer> beerOptional = beerRepository.get("Specjal");
         Assertions.assertThat(beerOptional).isNotEmpty();
     }
@@ -32,8 +32,8 @@ public class RepositoryTest {
     @Test(expected = IllegalArgumentException.class)
     public void add_objectAlreadyExist_IllegalArgumentException() {
         BeerRepository beerRepository = new BeerRepository();
-        beerRepository.add(Beer.builder().name("Specjal").price(4).build());
-        beerRepository.add(Beer.builder().name("Specjal").price(6).build());
+        beerRepository.save(Beer.builder().name("Specjal").price(4).build());
+        beerRepository.save(Beer.builder().name("Specjal").price(6).build());
     }
 
 

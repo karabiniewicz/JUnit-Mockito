@@ -1,13 +1,14 @@
 package s180009.view;
 
 import s180009.controller.BeerController;
+import s180009.entity.Beer;
 
 import java.util.Scanner;
 
-public class BeerDelete implements View {
+public class BeerSave implements View {
     private final BeerController beerController;
 
-    public BeerDelete(BeerController beerController) {
+    public BeerSave(BeerController beerController) {
         this.beerController = beerController;
     }
 
@@ -17,8 +18,10 @@ public class BeerDelete implements View {
 
         System.out.print("name: ");
         String name = scanner.nextLine();
+        System.out.print("price: ");
+        long price = Long.parseLong(scanner.nextLine());
 
-        String delete = beerController.delete(name);
-        System.out.println(delete);
+        String save = beerController.save(name, price);
+        System.out.println(save);
     }
 }

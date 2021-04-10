@@ -22,7 +22,7 @@ public class BeerController {
         }
     }
 
-    public String get(String name) {
+    public String find(String name) {
         Optional<Beer> beerOptional = beerRepository.get(name);
         if (beerOptional.isPresent()) {
             return beerOptional.get().toString();
@@ -32,9 +32,9 @@ public class BeerController {
         }
     }
 
-    public String save(Beer beer) {
+    public String save(String name, long price) {
         try {
-            beerRepository.add(beer);
+            beerRepository.save(Beer.builder().name(name).price(price).build());
             return "done";
         } catch (IllegalArgumentException e) {
             return "bad request";
