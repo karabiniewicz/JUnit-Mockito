@@ -1,8 +1,7 @@
 package s180009;
 
-import s180009.controller.BeerController;
-import s180009.initialize.InitializeTestData;
-import s180009.repository.BeerRepository;
+import s180009.controller.BeerManagement;
+import s180009.repository.BeerBase;
 import s180009.view.*;
 
 import java.util.Scanner;
@@ -10,10 +9,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        BeerController beerController = new BeerController(new BeerRepository());
-
-        InitializeTestData initializeTestData = new InitializeTestData(beerController);
-        initializeTestData.init();
+        BeerManagement beerManagement = new BeerManagement(new BeerBase());
 
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
@@ -22,19 +18,14 @@ public class Main {
             String command = scanner.next();
             switch (command) {
                 case "BeerSave":
-                    new BeerSave(beerController).display();
+                    new BeerSave(beerManagement).display();
                     break;
                 case "BeerDelete":
-                    new BeerDelete(beerController).display();
+                    new BeerDelete(beerManagement).display();
                     break;
                 case "BeerFind":
-                    new BeerFind(beerController).display();
+                    new BeerFind(beerManagement).display();
                     break;
-/*
-                case "viewAll":
-                    new DataView(beerController).display();
-                    break;
-*/
                 case "quit":
                     exit = true;
                     break;

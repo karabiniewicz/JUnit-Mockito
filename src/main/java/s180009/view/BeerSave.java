@@ -1,15 +1,14 @@
 package s180009.view;
 
-import s180009.controller.BeerController;
-import s180009.entity.Beer;
+import s180009.controller.BeerManagement;
 
 import java.util.Scanner;
 
 public class BeerSave implements View {
-    private final BeerController beerController;
+    private final BeerManagement beerManagement;
 
-    public BeerSave(BeerController beerController) {
-        this.beerController = beerController;
+    public BeerSave(BeerManagement beerManagement) {
+        this.beerManagement = beerManagement;
     }
 
     @Override
@@ -18,10 +17,10 @@ public class BeerSave implements View {
 
         System.out.print("name: ");
         String name = scanner.nextLine();
-        System.out.print("price: ");
-        long price = Long.parseLong(scanner.nextLine());
+        System.out.print("percent: ");
+        float percent = Float.parseFloat(scanner.nextLine());
 
-        String save = beerController.save(name, price);
+        String save = beerManagement.save(name, percent);
         System.out.println(save);
     }
 }

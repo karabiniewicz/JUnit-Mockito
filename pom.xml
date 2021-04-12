@@ -8,7 +8,7 @@
     <artifactId>AdamKarabiniewicz</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>Laboratory 4</name>
+    <name>Laboratory 5</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,7 +75,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>s180009.Lab4.Main</mainClass>
+                            <mainClass>s180009.Lab5.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,21 +1,21 @@
 package s180009.controller;
 
 import s180009.entity.Beer;
-import s180009.repository.BeerRepository;
+import s180009.repository.BeerBase;
 
 import java.util.Optional;
 
-public class BeerController {
+public class BeerManagement {
 
-    private BeerRepository beerRepository;
+    private BeerBase beerBase;
 
-    public BeerController(BeerRepository beerRepository) {
-        this.beerRepository = beerRepository;
+    public BeerManagement(BeerBase beerBase) {
+        this.beerBase = beerBase;
     }
 
     public String delete(String name) {
         try {
-            beerRepository.delete(name);
+            beerBase.delete(name);
             return "done";
         } catch (IllegalArgumentException e) {
             return "not found";
@@ -23,18 +23,17 @@ public class BeerController {
     }
 
     public String find(String name) {
-        Optional<Beer> beerOptional = beerRepository.get(name);
+        Optional<Beer> beerOptional = beerBase.find(name);
         if (beerOptional.isPresent()) {
             return beerOptional.get().toString();
-        }
-        else {
+        } else {
             return "not found";
         }
     }
 
-    public String save(String name, long price) {
+    public String save(String name, float percent) {
         try {
-            beerRepository.save(Beer.builder().name(name).price(price).build());
+            beerBase.save(Beer.builder().name(name).percent(percent).build());
             return "done";
         } catch (IllegalArgumentException e) {
             return "bad request";

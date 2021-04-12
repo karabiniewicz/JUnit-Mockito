@@ -14,13 +14,13 @@ public class Beer implements Serializable {
 
     private String name;
 
-    private long price;
+    private float percent;
 
     @Override
     public String toString() {
         return "Beer{" +
                 "name='" + name + '\'' +
-                ", price=" + price +
+                ", percent=" + percent +
                 '}';
     }
 }

@@ -6,33 +6,32 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
-public class BeerRepository {
+public class BeerBase {
 
-    private final Collection<Beer> collection = new ArrayList<>();
+    private final Collection<Beer> beers = new ArrayList<>();
 
     public void delete(String name) {
-        Beer beer = collection.stream()
+        Beer beer = beers.stream()
                 .filter(element -> element.getName().equals(name))
                 .findAny()
                 .orElseThrow(IllegalArgumentException::new);
-        collection.remove(beer);
+        beers.remove(beer);
     }
 
     public void save(Beer beer) {
-        Optional<Beer> any = collection.stream()
+        Optional<Beer> any = beers.stream()
                 .filter(element -> element.getName().equals(beer.getName()))
                 .findAny();
         if (any.isEmpty()) {
-            collection.add(beer);
+            beers.add(beer);
         } else {
             throw new IllegalArgumentException();
         }
     }
 
-    public Optional<Beer> get(String name) {
-        return collection.stream()
+    public Optional<Beer> find(String name) {
+        return beers.stream()
                 .filter(element -> element.getName().equals(name))
                 .findAny();
     }
 }
-

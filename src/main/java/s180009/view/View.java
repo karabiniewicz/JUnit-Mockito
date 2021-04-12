@@ -1,4 +1,5 @@
 package s180009.view;
+
 /**
  * Base interface for all command-line views.
  */

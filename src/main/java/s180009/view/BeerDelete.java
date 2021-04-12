@@ -1,14 +1,14 @@
 package s180009.view;
 
-import s180009.controller.BeerController;
+import s180009.controller.BeerManagement;
 
 import java.util.Scanner;
 
 public class BeerDelete implements View {
-    private final BeerController beerController;
+    private final BeerManagement beerManagement;
 
-    public BeerDelete(BeerController beerController) {
-        this.beerController = beerController;
+    public BeerDelete(BeerManagement beerManagement) {
+        this.beerManagement = beerManagement;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class BeerDelete implements View {
         System.out.print("name: ");
         String name = scanner.nextLine();
 
-        String delete = beerController.delete(name);
+        String delete = beerManagement.delete(name);
         System.out.println(delete);
     }
 }

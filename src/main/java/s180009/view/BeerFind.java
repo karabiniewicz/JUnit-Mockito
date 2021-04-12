@@ -1,14 +1,14 @@
 package s180009.view;
 
-import s180009.controller.BeerController;
+import s180009.controller.BeerManagement;
 
 import java.util.Scanner;
 
 public class BeerFind implements View {
-    private final BeerController beerController;
+    private final BeerManagement beerManagement;
 
-    public BeerFind(BeerController beerController) {
-        this.beerController = beerController;
+    public BeerFind(BeerManagement beerManagement) {
+        this.beerManagement = beerManagement;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class BeerFind implements View {
         System.out.print("name: ");
         String name = scanner.nextLine();
 
-        String save = beerController.find(name);
+        String save = beerManagement.find(name);
         System.out.println(save);
     }
 }
